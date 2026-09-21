@@ -9,6 +9,8 @@ body { margin:0; font-family: Georgia, serif; background: var(--bg); color: var(
 .page { max-width:900px; }
 .panel { background:var(--panel); padding:1rem; border-radius:8px; margin:0.5rem 0; }
 button { background:var(--accent); border:0; padding:0.4rem 0.8rem; border-radius:4px; cursor:pointer; }
+button:disabled { opacity:0.45; cursor:not-allowed; }
+.warn { color:#ff8a80; }
 table { width:100%; border-collapse:collapse; }
 th,td { border-bottom:1px solid #443820; padding:0.35rem; }
 .hero-num { font-size:2rem; color:var(--accent); font-weight:700; }
