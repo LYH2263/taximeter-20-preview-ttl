@@ -11,6 +11,7 @@ def init_db():
     CREATE TABLE IF NOT EXISTS trips(id INTEGER PRIMARY KEY, label TEXT, distance_km REAL, slow_min REAL, night INTEGER);
     CREATE TABLE IF NOT EXISTS settings(key TEXT PRIMARY KEY, value TEXT);
     CREATE TABLE IF NOT EXISTS calc_runs(id INTEGER PRIMARY KEY, kind TEXT, trip_id INTEGER, input_json TEXT, result_json TEXT, created_at TEXT);
+    CREATE TABLE IF NOT EXISTS fare_tokens(token TEXT PRIMARY KEY, trip_id INTEGER, input_json TEXT, result_json TEXT, expires_at TEXT, used INTEGER DEFAULT 0, superseded INTEGER DEFAULT 0, created_at TEXT);
     """)
     if conn.execute("SELECT COUNT(*) c FROM tariff").fetchone()["c"] == 0:
         conn.execute("INSERT INTO tariff(start_price,start_include_km,per_km,per_slow_min,night_factor) VALUES (11,3,2.5,0.8,1.2)")

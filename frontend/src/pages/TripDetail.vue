@@ -7,7 +7,7 @@ const trip = ref(null)
 const fare = ref(null)
 const load = async () => {
   trip.value = await getJSON(`/api/trips/${route.params.id}`)
-  fare.value = await postJSON('/api/fare', { distance_km: trip.value.distance_km, slow_min: trip.value.slow_min, night: !!trip.value.night, trip_id: trip.value.id, persist: false })
+  fare.value = await postJSON('/api/fare/quote', { distance_km: trip.value.distance_km, slow_min: trip.value.slow_min, night: !!trip.value.night })
 }
 onMounted(load); watch(() => route.params.id, load)
 </script>
